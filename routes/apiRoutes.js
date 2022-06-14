@@ -1,6 +1,15 @@
 const router = require('express').Router();
-const { createNewNote, validateNote } = require('../lib/notes');
+const { findById, createNewNote, validateNote } = require('../lib/notes');
 const {notes} = require('../db/db.json');
+
+router.get('/notes', (req, res) => {
+    const result = notes;
+    if (result) {
+        res.json(result);
+    } else {
+        res.send(400);
+    }
+});
 
 router.post('/notes', (req, res) => {
         req.body.id = notes.length.toString();
