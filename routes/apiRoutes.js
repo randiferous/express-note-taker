@@ -25,6 +25,7 @@ router.post('/notes', (req, res) => {
 router.delete('/notes/:id', (req, res) => {
     const note = findById(req.params.id, notes);
     removeNote(note, notes)
+    res.json(notes)
 })
 
 module.exports = router;
